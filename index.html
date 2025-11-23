@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BƠM CỨU HỘ TÀU KN750</title>
+    <style>
+        /* Your existing styles remain unchanged */
+
+        body {
+            background-color: #f8f8f8;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(to right, #3498db, #2980b9);
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+            font-size: 32px;
+        }
+
+        .menu-container {
+            display: flex;
+            justify-content: center;
+            background: #e74c3c;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin: 20px;
+            overflow: hidden;
+        }
+
+        .menu-item {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 20px;
+            transition: background 0.3s, color 0.3s;
+            background: #c0392b;
+            border-radius: 5px;
+            margin: 5px;
+            cursor: pointer; /* Added cursor pointer for better UX */
+        }
+
+        .menu-item:hover {
+            background: #d9534f;
+            color: #ffffff;
+        }
+
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+           
+            margin: 20px;
+            height: 100vh;
+        }
+
+        .content-right {
+            width: 90%;
+            min-height: 80vh;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+           
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 80%;
+            height: auto;
+            border: none;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .video-container {
+                width: 90%;
+            }
+
+            .menu-item {
+                font-size: 16px;
+            }
+        }
+
+        @media only screen and (max-width: 428px) {
+            .menu-item {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <a href="index.html" style="color: #ffffff; text-decoration: none;">BƠM CỨU HỘ TÀU KN750</a>
+    </div>
+
+    <div class="menu-container">
+        <div class="menu-item" onclick="loadContent('iframe', 'DATA/3dmodel.html')">MÔ HÌNH 3D</div>
+        <div class="menu-item" onclick="loadContent('video', 'DATA/Nguyen Ly 01.mp4')">NGUYÊN LÝ HOẠT ĐỘNG</div>
+        <div class="menu-item" onclick="loadContent('video', 'DATA/Cau tao va hoat dong.mp4')">THAO TÁC SỬ DỤNG</div>
+    </div>
+
+    <div class="content-container">
+        <div class="content-right">
+            <div id="videoContainer" class="video-container" style="display: none;">
+                <video id="videoPlayer" width="100%" height="auto" controls autoplay loop muted>
+                    <!-- Default video source, will be replaced dynamically -->
+                    <source src="DATA/Nguyen Ly 01.mp4" type="video/mp4">
+                </video>
+            </div>
+            <iframe id="iframeContainer" class="video-container" src="360VIEW\Data\360view.html" frameborder="0" scrolling="no" style="overflow:hidden;"></iframe>
+        </div>
+    </div>
+
+    <script>
+        function loadContent(contentType, source) {
+            var videoContainer = document.getElementById('videoContainer');
+            var iframeContainer = document.getElementById('iframeContainer');
+
+            if (contentType === 'video') {
+                videoContainer.style.display = 'block';
+                iframeContainer.style.display = 'none';
+                document.getElementById('videoPlayer').src = source;
+            } else if (contentType === 'iframe') {
+                videoContainer.style.display = 'none';
+                iframeContainer.style.display = 'block';
+                iframeContainer.src = source;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
